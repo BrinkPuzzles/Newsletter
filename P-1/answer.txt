@@ -1,0 +1,13 @@
+The error (Javascript):
+
+// make letter a = code 0
+
+hash_code += c.charCodeAt() - 'a'.charCodeAt()
+
+Insisting that letter “a” should be zero means that some characters will have a negative code, which means it’s possible to have a digest that is zero. The word “chickadee's” is one of them. (Apostrophe is lower in Unicode than “a.”)
+
+Zero digests are eliminated as filler, causing the “slip.” You change the line to:
+
+hash_code += c.charCodeAt()
+
+and all the soaps line up.
